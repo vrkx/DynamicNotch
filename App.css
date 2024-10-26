@@ -14,14 +14,14 @@
         
 
         
-        .island{ 
+        .island {
             background: black;
-            display: flex;
+            display: grid;
             width: 170px;
+             position: fixed; 
             height: 40px;
             align-self: center;
             border-radius: 100px;
-            align-content: center;
             justify-self: center;
         }
 body {
