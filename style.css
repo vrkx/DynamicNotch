@@ -4,14 +4,6 @@ font-family: iOS;
 src: url(fonts/SFPRODISPLAYREGULAR.OTF);
 }
 
-.island  {
-
-color: black;
-background-color: black;
-font-family: iOS;
-display: flex;
-
-}
 
 @font-face{
 

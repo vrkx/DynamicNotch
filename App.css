@@ -12,6 +12,17 @@
         src: url(fonts/SFPRODISPLAYBOLD.OTF);
         }
         
+
+        
+.island  {
+
+    color: black;
+    background-color: black;
+    font-family: iOS;
+    display: flex;
+    
+    }
+    
 body {
     font-family: biOS;
     background-color: #101010;
