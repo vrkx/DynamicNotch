@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Application</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <meta name="HandheldFriendly" content="true" />
+      <link rel="stylesheet" href="App.css">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="manifest" href="manifest.json">
+      <link rel="apple-touch-startup-image" href="images/splashscreen.png">
+      <script>
+          //if browser support service worker
+          if('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+          };
+        </script>
+
+
+<style>
+  *:not(input):not(select):not(code):not(textarea):not([contenteditable]) {
+     webkit-touch-callout: none;
+     -webkit-user-select: none;
+     -khtml-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+  }
+  </style>
+  </head>
+<body>
+   
+    <div class="island">
+
+      
+
+    </div>
+
+    <hr>
+    
+    <label class="infooo">ℹ️ Information</label>
+     
+    
+    <hr>
+
+    <div id="app" >
+      <div id="version" class="VerDiv">🔄 Current Version: <span id="current-version">1.5.6</span></div>
+      <div id="update-message"></div>
+  </div>
+  <script src="app.js"></script>
+
+</div>
+   
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(registration => console.log('Service Worker registered'))
+                .catch(error => console.log('Service Worker registration failed:', error));
+        }
+    </script>
+
+      <span class="info-label">Software Version:</span>
+      <span class="info-label" id="software-version">Detecting...</span>
+
+
+      <span class="info-label">Device Model:</span>
+      <span class="info-label" id="device-model">Detecting...</span>
+
+<script>
+  function getAppleDeviceInfo() {
+      const userAgent = navigator.userAgent;
+      let deviceModel = "Unknown Apple Device";
+      let softwareVersion = "Unknown";
+      let isApple = false;
+
+      // Helper function to extract version from user agent string
+      function extractVersion(regex) {
+          const match = userAgent.match(regex);
+          return match ? match[1] : null;
+      }
+
+      // Check for iOS devices (iPhone, iPad, iPod)
+      if (/iPhone|iPad|iPod/.test(userAgent)) {
+          isApple = true;
+          const iOSVersion = extractVersion(/OS (\d+)_/);
+          softwareVersion = iOSVersion ? `iOS ${iOSVersion}` : "iOS (version unknown)";
+          
+          if (/iPhone/.test(userAgent)) {
+              deviceModel = "iPhone";
+          } else if (/iPad/.test(userAgent)) {
+              deviceModel = "iPad";
+          } else if (/iPod/.test(userAgent)) {
+              deviceModel = "iPod";
+          }
+      }
+      // Check for Mac
+      else if (/Mac/.test(userAgent)) {
+          isApple = true;
+          const macOSVersion = extractVersion(/Mac OS X (\d+[._]\d+)/);
+          if (macOSVersion) {
+              const versionNumber = macOSVersion.replace('_', '.');
+              softwareVersion = parseFloat(versionNumber) >= 10.15 ? `macOS ${versionNumber}` : `OS X ${versionNumber}`;
+          } else {
+              softwareVersion = "macOS (version unknown)";
+          }
+          deviceModel = "Mac";
+      }
+
+      if (isApple) {
+          document.getElementById('software-version').textContent = softwareVersion;
+          document.getElementById('device-model').textContent = deviceModel;
+      } else {
+          document.getElementById('not-apple').style.display = 'block';
+          document.querySelector('.info-container').style.display = 'none';
+      }
+  }
+
+  // Call the function when the page loads
+  window.onload = getAppleDeviceInfo;
+</script>
+
+<script>
+  // Call the function when the page loads
+  window.onload = getAppleDeviceInfo;
+</script>
+
+</body>
+</html>
