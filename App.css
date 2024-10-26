@@ -14,15 +14,16 @@
         
 
         
-.island  {
-
-    color: black;
-    background-color: black;
-    font-family: iOS;
-    display: flex;
-    
-    }
-    
+        .island{
+            background: black;
+            display: flex;
+            width: 170px;
+            height: 40px;
+            align-self: center;
+            border-radius: 100px;
+            align-content: center;
+            justify-self: center;
+        }
 body {
     font-family: biOS;
     background-color: #101010;
